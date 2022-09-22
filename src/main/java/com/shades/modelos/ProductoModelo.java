@@ -16,24 +16,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "producto")
 public class ProductoModelo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long productoId;
-	
+
 	@Column(nullable = false)
 	private String nombreProducto;
-	
+
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "categoriaId")
 	private CategoriaModelo categoria;
-	
+
 	private BigDecimal precio;
-	
+
 	@Column(columnDefinition = "text")
 	private String descripcion;
-	
+
+	private String imageUrl;
+
 	@OneToMany(mappedBy = "producto")
 	private List<PivoteModelo> pivote;
 
@@ -77,6 +79,14 @@ public class ProductoModelo {
 		this.descripcion = descripcion;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public List<PivoteModelo> getPivote() {
 		return pivote;
 	}
@@ -88,7 +98,5 @@ public class ProductoModelo {
 	public ProductoModelo() {
 		super();
 	}
-	
-	
-	
+
 }

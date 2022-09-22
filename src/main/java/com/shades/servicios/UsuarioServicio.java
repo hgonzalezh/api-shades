@@ -1,5 +1,7 @@
 package com.shades.servicios;
 
+import static java.util.Collections.emptyList;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -50,9 +52,12 @@ public class UsuarioServicio implements UserDetailsService { // 'implements User
     }
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
+		UsuarioModelo user = usuarioRepository.findByCorreo(correo);
+		if(user == null) {
+            throw new UsernameNotFoundException(correo);
+        }
+        return new org.springframework.security.core.userdetails.User(user.getCorreo(), user.getContrasenia(), emptyList());
 	}
     
 }

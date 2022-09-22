@@ -8,5 +8,5 @@ import com.shades.modelos.UsuarioModelo;
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<UsuarioModelo, Long>{
 	
-	
+	UsuarioModelo findByCorreo(String nombre);
 }

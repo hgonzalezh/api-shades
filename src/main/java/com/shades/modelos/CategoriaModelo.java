@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "categoria")
@@ -26,7 +24,6 @@ public class CategoriaModelo {
 	private String nombreCategoria;
 
 	@OneToMany(mappedBy = "categoria")
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<ProductoModelo> producto;
 
 	public Long getCategoriaId() {

@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name = "producto")
 public class ProductoModelo {
@@ -27,6 +30,7 @@ public class ProductoModelo {
 
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "categoriaId")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private CategoriaModelo categoria;
 
 	private BigDecimal precio;

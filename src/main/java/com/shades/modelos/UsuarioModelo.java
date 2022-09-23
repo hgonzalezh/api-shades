@@ -33,9 +33,6 @@ public class UsuarioModelo {
 	private String telefono;
 
 	@OneToMany(mappedBy = "usuario")
-	private List<CarritoModelo> carrito;
-
-	@OneToMany(mappedBy = "usuario")
 	private List<MetodoDePagoModelo> metodoDePago;
 
 	public Long getUsuarioId() {
@@ -80,14 +77,6 @@ public class UsuarioModelo {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-
-	public List<CarritoModelo> getCarrito() {
-		return carrito;
-	}
-
-	public void setCarrito(List<CarritoModelo> carrito) {
-		this.carrito = carrito;
 	}
 
 	public List<MetodoDePagoModelo> getMetodoDePago() {
